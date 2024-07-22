@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Stack(
-    alignment: Alignment.center,
-    children: [
-      Container(
-        color: Colors.deepPurple,
-        height: 150,
-        width: 150,
-      ),
-      Container(
-        color: Colors.deepPurpleAccent,
-        height: 120,
-        width: 120,
-      ),
-      Container(
-        color: Colors.purple,
-        height: 90,
-        width: 90,
-        child: Center(child: Text('VIVO', textDirection: TextDirection.ltr)),
-      ),
-    ],
-  ));
+  PlanoInternet plano = PlanoInternet('Vivo Fibra', 100.0, 99.99);
+  plano.exibirInfo();
+  plano.velocidade = 200.0;
+  plano.exibirInfo();
+}
+
+class PlanoInternet {
+
+  String _nome;
+  double _velocidade;
+  double _preco;
+
+  PlanoInternet(this._nome, this._velocidade, this._preco);
+
+  // Getters e Setters
+  String get nome => _nome;
+  double get preco => _preco;
+  double get velocidade => _velocidade;
+
+  set nome(String novoNome) => _nome = novoNome;
+  set preco(double novoPreco) => _preco = novoPreco;
+  set velocidade(double novaVelocidade) => _velocidade = novaVelocidade;
+
+  void exibirInfo() {
+    print('Plano: $_nome, Velocidade: $_velocidade Mbps, Preço: R\$${_preco}');
+  }
 }
