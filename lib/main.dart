@@ -13,17 +13,17 @@ class VivoApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Histórico de faturas'),
+          title: const Text('Histórico de faturas'),
         ),
-        body: HistoricoDeFaturas(),
+        body: const HistoricoDeFaturas(),
       ),
     );
   }
 }
 
-/***************************************
- * Widgets para listagem de faturas    *
- ***************************************/
+/// *************************************
+/// Widgets para listagem de faturas    *
+///*************************************
 
 class HistoricoDeFaturas extends StatelessWidget {
   const HistoricoDeFaturas({
@@ -32,7 +32,7 @@ class HistoricoDeFaturas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Column(
         children: [
           CardFatura(
@@ -50,26 +50,25 @@ class HistoricoDeFaturas extends StatelessWidget {
 }
 
 class CardFatura extends StatelessWidget {
-  double valor;
-  String vencimento;
+  final double valor;
+  final String vencimento;
 
-  bool aberta;
-  bool atrasada;
+  final bool aberta;
+  final bool atrasada;
 
-  CardFatura(this.valor, this.vencimento,
-      {this.aberta = false, this.atrasada = false, Key? key})
-      : super(key: key);
+  const CardFatura(this.valor, this.vencimento,
+      {this.aberta = false, this.atrasada = false, super.key});
 
   @override
   Widget build(BuildContext context) {
     String status = 'Paga';
-    Icon icone = Icon(Icons.check_circle, color: Colors.green);
+    Icon icone = const Icon(Icons.check_circle, color: Colors.green);
 
     if (atrasada) {
-      icone = Icon(Icons.watch_later_outlined, color: Colors.red);
+      icone = const Icon(Icons.watch_later_outlined, color: Colors.red);
       status = 'Atrasada';
     } else if (aberta) {
-      icone = Icon(Icons.error_outline, color: Colors.grey);
+      icone = const Icon(Icons.error_outline, color: Colors.grey);
       status = 'Aberta';
     }
 
@@ -80,17 +79,19 @@ class CardFatura extends StatelessWidget {
         title: Text('Venceu em $vencimento'),
         subtitle: Text(status),
         trailing: Text("R\$ ${valor.toStringAsFixed(2)}",
-            style: TextStyle(color: Colors.black, fontSize: 20.0)),
+            style: const TextStyle(color: Colors.black, fontSize: 20.0)),
       ),
     );
   }
 }
 
-/***************************************
- * Widgets para jogo de dados          *
- ***************************************/
+/// *************************************
+/// Widgets para jogo de dados          *
+///*************************************
 
 class JogoDeDados extends StatefulWidget {
+  const JogoDeDados({super.key});
+
   @override
   JogoDeDadosState createState() => JogoDeDadosState();
 }
@@ -106,12 +107,12 @@ class JogoDeDadosState extends State<JogoDeDados> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Dado(dado1), SizedBox(width: 8), Dado(dado2)],
+          children: [Dado(dado1), const SizedBox(width: 8), Dado(dado2)],
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
         ElevatedButton(
           onPressed: sorteia,
-          child: Text('Rolar dados'),
+          child: const Text('Rolar dados'),
         )
       ],
     );
@@ -128,7 +129,7 @@ class JogoDeDadosState extends State<JogoDeDados> {
 class Dado extends StatelessWidget {
   final String numero;
 
-  const Dado(this.numero);
+  const Dado(this.numero, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -142,14 +143,14 @@ class Dado extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
             blurRadius: 6,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Center(
         child: Text(
           numero,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 50,
             fontWeight: FontWeight.bold,
           ),
