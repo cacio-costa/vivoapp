@@ -64,6 +64,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/flu_serie_b.jpg
+    - assets/images/corinthians_rebaixado.jpeg
     - assets/images/produtos_apple.jpg
 
 
