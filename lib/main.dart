@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vivoapp/screens/fatura/historico.dart';
+import 'package:vivoapp/screens/home.dart';
 
 void main() => runApp(const VivoApp());
 
@@ -8,8 +8,15 @@ class VivoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HistoricoDeFaturas(),
+    return const MaterialApp(
+      home: Home()
+      // PagamentoFatura(
+      //   Fatura(
+      //     valor: 158.0,
+      //     vencimento: DateTime(2024, 7, 25),
+      //     id: 4,
+      //   ),
+      // ),
     );
   }
 }
