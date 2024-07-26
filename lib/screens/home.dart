@@ -7,11 +7,17 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: const Text('Vivo App')),
       body: const Padding(
         padding: EdgeInsets.all(8.0),
         child: AcessoRapido(),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('Floating action button clicado...');
+        },
+        child: const Icon(Icons.phone),
+      )
     );
   }
 }

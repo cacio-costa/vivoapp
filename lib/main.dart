@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vivoapp/screens/home.dart';
+import 'package:vivoapp/widgets/imagem/exemplos_com_image.dart';
 
 void main() => runApp(const VivoApp());
 
@@ -8,15 +9,31 @@ class VivoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home()
-      // PagamentoFatura(
-      //   Fatura(
-      //     valor: 158.0,
-      //     vencimento: DateTime(2024, 7, 25),
-      //     id: 4,
-      //   ),
-      // ),
+    return MaterialApp(
+      title: 'Vivo App',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF8533AD)),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF8533AD),
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 24),
+        ),
+        filledButtonTheme: FilledButtonThemeData(
+          style: ButtonStyle(
+            padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            ),
+          ),
+        ),
+
+      ),
+
+      home: Home(),
+      // home: ExemploDecorationImage(),
     );
   }
 }

@@ -47,10 +47,10 @@ class _TopoPainelFatura extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Map<StatusFatura, Icon> statusIcons = {
+    Map<StatusFatura, Icon> statusIcons = {
       StatusFatura.paga: Icon(
         Icons.check,
-        color: Colors.green,
+        color: Colors.green[800],
       ),
       StatusFatura.atrasada:
       Icon(Icons.watch_later_outlined, color: Colors.red),
@@ -63,7 +63,7 @@ class _TopoPainelFatura extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Chip(
-            backgroundColor: Colors.grey[200],
+            // backgroundColor: Colors.grey[200],
             labelStyle: const TextStyle(color: Colors.black),
             avatar: statusIcons[fatura.status],
             label: Text(fatura.status.name),
@@ -140,12 +140,12 @@ class _RodapePainelFatura extends StatelessWidget {
         children: [
           FilledButton(
             onPressed: onPagamento,
-            style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.all(Colors.purple[800]),
-              padding: WidgetStateProperty.all(
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              ),
-            ),
+            // style: ButtonStyle(
+            //   backgroundColor: WidgetStateProperty.all(Colors.purple[800]),
+            //   padding: WidgetStateProperty.all(
+            //     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            //   ),
+            // ),
             child: const Text(
               'Pagar fatura',
               style: TextStyle(color: Colors.white, fontSize: 16),
