@@ -275,6 +275,7 @@ class ExemploSliverAppBar extends StatelessWidget {
         slivers: [
           SliverAppBar(
             expandedHeight: 200,
+            floating: true,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               title: Text('SliverAppBar'),

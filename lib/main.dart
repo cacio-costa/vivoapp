@@ -12,16 +12,28 @@ class VivoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Vivo App',
-      // home: Home(),
-      // home: ExemploDecorationImage(),
-      // home: ExemploRichText(),
-      // home: ExemploFlexible(),
-      // home: ExemploExpanded(),
-      // home: ExemploCircleAvatar(),
-      // home: ExemploWrap(),
-      // home: ExemploFittedBox(),
-      // home: ExemploVisibility(),
-      home: ExemploSliverAppBar(),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF8533AD)),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF8533AD),
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 24),
+        ),
+        filledButtonTheme: FilledButtonThemeData(
+          style: ButtonStyle(
+            padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            ),
+          ),
+        ),
+
+      ),
+      home: Home(),
+
     );
 
   }
