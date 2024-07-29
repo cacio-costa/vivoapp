@@ -12,7 +12,7 @@ class VivoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Vivo App',
-      // home: Home(),
+      home: Home(),
       // home: ExemploDecorationImage(),
       // home: ExemploRichText(),
       // home: ExemploFlexible(),
@@ -21,7 +21,7 @@ class VivoApp extends StatelessWidget {
       // home: ExemploWrap(),
       // home: ExemploFittedBox(),
       // home: ExemploVisibility(),
-      home: ExemploSliverAppBar(),
+      // home: ExemploSliverAppBar(),
     );
 
   }

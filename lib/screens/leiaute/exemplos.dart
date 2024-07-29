@@ -20,7 +20,7 @@ class ExemploRichText extends StatelessWidget {
       appBar: AppBar(title: const Text('Exemplo de RichText')),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(24.0),
           child: RichText(
               text: TextSpan(
             style: TextStyle(
@@ -70,7 +70,7 @@ class ExemploFlexible extends StatelessWidget {
       body: Column(
         children: [
           Flexible(
-            flex: 1,
+            flex: 2,
             child: Container(
               color: Colors.red,
             ),
@@ -82,7 +82,7 @@ class ExemploFlexible extends StatelessWidget {
             ),
           ),
           Flexible(
-            flex: 1,
+            flex: 3,
             child: Container(
               color: Colors.blue,
             ),
@@ -106,13 +106,23 @@ class ExemploExpanded extends StatelessWidget {
             color: Colors.red,
             height: 150,
           ),
-          Container(
-            color: Colors.green,
-            height: 150,
+          Expanded(
+            flex: 3,
+            child: Container(
+              color: Colors.green,
+              height: 150,
+            ),
           ),
           Container(
             color: Colors.blue,
             height: 150,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.purple,
+              height: 150,
+            ),
           ),
         ],
       ),
@@ -129,7 +139,7 @@ class ExemploCircleAvatar extends StatelessWidget {
       appBar: AppBar(title: const Text('Exemplo de CircleAvatar')),
       body: Center(
         child: CircleAvatar(
-          radius: 100,
+          radius: 200,
           backgroundImage:
               const AssetImage('assets/images/corinthians_rebaixado.jpeg'),
         ),
@@ -146,6 +156,8 @@ class ExemploWrap extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Exemplo de Wrap')),
       body: Wrap(
+        spacing: 8,
+        runSpacing: 8,
         children: [
           Container(
             color: Colors.red,
@@ -274,6 +286,7 @@ class ExemploSliverAppBar extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            floating: true,
             expandedHeight: 200,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
