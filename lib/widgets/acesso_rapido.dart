@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/screens/fatura/central.dart';
+import 'package:vivoapp/screens/suporte/lista_chamados.dart';
 import 'package:vivoapp/widgets/botoes.dart';
 
 class AcessoRapido extends StatelessWidget {
-  const AcessoRapido({
+  AcessoRapido({
     super.key,
   });
 
@@ -41,6 +43,11 @@ class AcessoRapido extends StatelessWidget {
                   BotaoCard.grande(
                     icone: Icons.settings,
                     rotulo: 'Suporte técnico',
+                    onclick: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => ListaDeChamados()),
+                      );
+                    }
                   ),
                 ],
               ),

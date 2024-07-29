@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/widgets/acesso_rapido.dart';
 
 class Home extends StatelessWidget {
@@ -8,7 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Vivo App')),
-      body: const Padding(
+      body: Padding(
         padding: EdgeInsets.all(8.0),
         child: AcessoRapido(),
       ),

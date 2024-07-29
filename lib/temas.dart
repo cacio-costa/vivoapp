@@ -21,4 +21,8 @@ ThemeData TEMA_CLARO = ThemeData(
       ),
     ),
   ),
+  inputDecorationTheme: const InputDecorationTheme(
+    border: OutlineInputBorder(),
+
+  ),
 );

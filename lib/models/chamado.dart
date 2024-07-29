@@ -1,5 +1,6 @@
 class Chamado {
 
+  final int userId;
   final String titulo;
   final DateTime dataDeAbertura;
   final String descricao;
@@ -7,6 +8,7 @@ class Chamado {
   DateTime? dataDeFechamento;
 
   Chamado({
+    required this.userId,
     required this.titulo,
     required this.dataDeAbertura,
     required this.descricao,
@@ -16,6 +18,6 @@ class Chamado {
 
   @override
   String toString() {
-    return 'Chamado{titulo: $titulo, dataDeAbertura: $dataDeAbertura, descricao: $descricao, dataDeFechamento: $dataDeFechamento}';
+    return 'Chamado{userId: $userId, titulo: $titulo, dataDeAbertura: $dataDeAbertura, descricao: $descricao, dataDeFechamento: $dataDeFechamento}';
   }
 }
