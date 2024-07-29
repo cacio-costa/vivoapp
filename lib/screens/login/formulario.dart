@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vivoapp/models/usuario.dart';
+import 'package:vivoapp/providers/usuario_provider.dart';
 import 'package:vivoapp/screens/home.dart';
 
 class FormularioDeLogin extends StatefulWidget {
@@ -57,6 +59,7 @@ class _FormularioDeLoginState extends State<FormularioDeLogin> {
                           email: _campoEmail.text,
                         );
 
+                        context.read<UsuarioProvider>().login(usuario);
                         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => Home()),);
                       }
                     },

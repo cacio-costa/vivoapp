@@ -12,40 +12,45 @@ class ListaDeChamados extends StatefulWidget {
 }
 
 class _ListaDeChamadosState extends State<ListaDeChamados> {
-  List<Chamado> _chamados = [
-    Chamado(
-      userId: 1,
-      titulo: 'O Palmeiras tem mundial sim!',
-      dataDeAbertura: DateTime(2024, 7, 26),
-      descricao:
-          'invenire vituperata tation deserunt felis meliore ius fuisset te aliquet harum class lacinia malorum usu tacimates evertitur nec referrentur tibique nullam quaestio sed ludus phasellus accommodare nulla natoque ut nobis mutat graeco mnesarchum habitasse scripserit dicunt nonumes epicuri dolor sea',
-    ),
-    Chamado(
-      userId: 1,
-      titulo: 'Quiz foi difícil',
-      dataDeAbertura: DateTime(2024, 7, 25),
-      descricao:
-          'graece gravida pellentesque labores esse facilisi signiferumque tale moderatius viris',
-    ),
-    Chamado(
-      userId: 1,
-      titulo: 'Disponibilizar código fonte',
-      dataDeAbertura: DateTime(2024, 7, 24),
-      descricao:
-          'simul saperet sapientem vim elaboraret urna graece mediocrem lacinia eloquentiam in similique assueverit adolescens tacimates partiendo pertinax propriae elit est',
-    ),
-  ];
+  List<Chamado> _chamados = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _chamados = [
+      Chamado(
+        userId: 1,
+        titulo: 'O Palmeiras tem mundial sim!',
+        dataDeAbertura: DateTime(2024, 7, 26),
+        descricao:
+        'invenire vituperata tation deserunt felis meliore ius fuisset te aliquet harum class lacinia malorum usu tacimates evertitur nec referrentur tibique nullam quaestio sed ludus phasellus accommodare nulla natoque ut nobis mutat graeco mnesarchum habitasse scripserit dicunt nonumes epicuri dolor sea',
+      ),
+      Chamado(
+        userId: 1,
+        titulo: 'Quiz foi difícil',
+        dataDeAbertura: DateTime(2024, 7, 25),
+        descricao:
+        'graece gravida pellentesque labores esse facilisi signiferumque tale moderatius viris',
+      ),
+      Chamado(
+        userId: 1,
+        titulo: 'Disponibilizar código fonte',
+        dataDeAbertura: DateTime(2024, 7, 24),
+        descricao:
+        'simul saperet sapientem vim elaboraret urna graece mediocrem lacinia eloquentiam in similique assueverit adolescens tacimates partiendo pertinax propriae elit est',
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Chamados')),
-      body: ListView(
-        children: [
-          _CardChamado(_chamados[0]),
-          _CardChamado(_chamados[1]),
-          _CardChamado(_chamados[2]),
-        ],
+      body: ListView.builder(
+        itemCount: _chamados.length,
+        itemBuilder: (context, index) {
+          return _CardChamado(_chamados[index]);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -58,7 +63,9 @@ class _ListaDeChamadosState extends State<ListaDeChamados> {
               .then(
                 (chamado) => {
                   print(chamado),
-                  if (chamado != null) {_chamados.add(chamado)},
+                  if (chamado != null) {
+                    setState(() => _chamados.add(chamado))
+                  },
 
                 },
               );

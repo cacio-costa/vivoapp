@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vivoapp/models/chamado.dart';
 import 'package:vivoapp/models/usuario.dart';
+import 'package:vivoapp/providers/usuario_provider.dart';
 
 class FormularioNovoChamado extends StatefulWidget {
   FormularioNovoChamado({super.key});
@@ -51,7 +53,8 @@ class _FormularioNovoChamadoState extends State<FormularioNovoChamado> {
                 Center(
                   child: FilledButton(
                     onPressed: () {
-                      var chamado = criaChamado();
+                      int id = context.read<UsuarioProvider>().usuario!.id;
+                      var chamado = criaChamado(id);
                       Navigator.of(context).pop(chamado);
                     },
                     child: const Text('Enviar chamado'),
@@ -65,9 +68,9 @@ class _FormularioNovoChamadoState extends State<FormularioNovoChamado> {
     );
   }
 
-  Chamado criaChamado() {
+  Chamado criaChamado(int id) {
     return Chamado(
-      userId: 1,
+      userId: id,
       titulo: campoTitulo.text,
       dataDeAbertura: DateTime.now(),
       descricao: campoDescricao.text,
