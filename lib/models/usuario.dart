@@ -1,5 +1,8 @@
 class Usuario {
-  int id;
+
+  static final String ULID = '01j40txzxt3xh713e3fgyp04jd';
+
+  String id;
   String nome;
   String email;
 

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ulid/ulid.dart';
 import 'package:vivoapp/models/chamado.dart';
 import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/screens/suporte/formulario_novo_chamado.dart';
+import 'package:vivoapp/services/api.dart';
+
 
 class ListaDeChamados extends StatefulWidget {
   ListaDeChamados({super.key});
@@ -17,29 +20,7 @@ class _ListaDeChamadosState extends State<ListaDeChamados> {
   @override
   void initState() {
     super.initState();
-    _chamados = [
-      Chamado(
-        userId: 1,
-        titulo: 'O Palmeiras tem mundial sim!',
-        dataDeAbertura: DateTime(2024, 7, 26),
-        descricao:
-        'invenire vituperata tation deserunt felis meliore ius fuisset te aliquet harum class lacinia malorum usu tacimates evertitur nec referrentur tibique nullam quaestio sed ludus phasellus accommodare nulla natoque ut nobis mutat graeco mnesarchum habitasse scripserit dicunt nonumes epicuri dolor sea',
-      ),
-      Chamado(
-        userId: 1,
-        titulo: 'Quiz foi difícil',
-        dataDeAbertura: DateTime(2024, 7, 25),
-        descricao:
-        'graece gravida pellentesque labores esse facilisi signiferumque tale moderatius viris',
-      ),
-      Chamado(
-        userId: 1,
-        titulo: 'Disponibilizar código fonte',
-        dataDeAbertura: DateTime(2024, 7, 24),
-        descricao:
-        'simul saperet sapientem vim elaboraret urna graece mediocrem lacinia eloquentiam in similique assueverit adolescens tacimates partiendo pertinax propriae elit est',
-      ),
-    ];
+    carregaListaDeChamados();
   }
 
   @override
@@ -73,6 +54,13 @@ class _ListaDeChamadosState extends State<ListaDeChamados> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  void carregaListaDeChamados() async {
+    debugPrint('Buscando chamados');
+    _chamados = await listaChamados();
+    _chamados.sort((a, b) => b.dataDeAbertura.compareTo(a.dataDeAbertura));
+    setState(() {});
   }
 }
 

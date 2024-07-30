@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ulid/ulid.dart';
+import 'package:vivoapp/services/api.dart';
 import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/providers/usuario_provider.dart';
 import 'package:vivoapp/screens/home.dart';
+import 'package:vivoapp/services/autenticacao.dart';
 
 class FormularioDeLogin extends StatefulWidget {
   const FormularioDeLogin({super.key});
@@ -54,13 +57,17 @@ class _FormularioDeLoginState extends State<FormularioDeLogin> {
                         &&(_campoSenha.text != null && _campoSenha.text == '123')) {
 
                         Usuario usuario = Usuario(
-                          id: 1,
+                          id: Usuario.ULID,
                           nome: 'Fulano',
                           email: _campoEmail.text,
                         );
 
-                        context.read<UsuarioProvider>().login(usuario);
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => Home()),);
+
+                        context.read<UsuarioProvider>().login(usuario)
+                          .then((_) =>
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(builder: (_) => Home()))
+                          );
                       }
                     },
                     child: const Text('Entrar'),
