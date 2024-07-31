@@ -40,6 +40,7 @@ dependencies:
   http: ^1.2.2
   ulid: ^2.0.0
   shared_preferences: ^2.2.3
+  flutter_native_splash: ^2.4.1
 
 dev_dependencies:
   flutter_test:
@@ -98,3 +99,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+
+  image: assets/images/logo.png
+  color: "#8533AD"

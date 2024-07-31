@@ -6,7 +6,6 @@ import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/screens/suporte/formulario_novo_chamado.dart';
 import 'package:vivoapp/services/api.dart';
 
-
 class ListaDeChamados extends StatefulWidget {
   ListaDeChamados({super.key});
 
@@ -27,11 +26,15 @@ class _ListaDeChamadosState extends State<ListaDeChamados> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Chamados')),
-      body: ListView.builder(
-        itemCount: _chamados.length,
-        itemBuilder: (context, index) {
-          return _CardChamado(_chamados[index]);
-        },
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 80.0),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: _chamados.length,
+          itemBuilder: (context, index) {
+            return _CardChamado(_chamados[index]);
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -44,10 +47,7 @@ class _ListaDeChamadosState extends State<ListaDeChamados> {
               .then(
                 (chamado) => {
                   print(chamado),
-                  if (chamado != null) {
-                    setState(() => _chamados.add(chamado))
-                  },
-
+                  if (chamado != null) {setState(() => _chamados.add(chamado))},
                 },
               );
         },
@@ -64,49 +64,69 @@ class _ListaDeChamadosState extends State<ListaDeChamados> {
   }
 }
 
-class _CardChamado extends StatelessWidget {
+class _CardChamado extends StatefulWidget {
   final Chamado _chamado;
 
   const _CardChamado(this._chamado, {super.key});
 
   @override
-  Widget build(BuildContext context) {
-    var abertura = DateFormat('dd/MM/yyyy').format(_chamado.dataDeAbertura);
+  State<_CardChamado> createState() => _CardChamadoState();
+}
 
-    Icon icone = _chamado.fechado
+class _CardChamadoState extends State<_CardChamado> {
+  bool selecionado = false;
+  Icon? icone;
+
+  @override
+  void initState() {
+    super.initState();
+
+    icone = widget._chamado.fechado
         ? const Icon(Icons.check_circle, color: Colors.green)
         : const Icon(Icons.error_outline, color: Colors.grey);
+  }
 
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border(
-          bottom: BorderSide(color: Colors.grey.shade300),
-        ),
-      ),
-      child: ListTile(
-        leading: icone,
-        title: Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: RichText(
-            text: TextSpan(
-              style: Theme.of(context).textTheme.titleMedium,
-              children: [
-                TextSpan(
-                  text: '${_chamado.titulo}\n',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                TextSpan(
-                    text: 'Aberto em $abertura',
-                    style: Theme.of(context).textTheme.titleSmall),
-              ],
-            ),
+  @override
+  Widget build(BuildContext context) {
+    var abertura =
+        DateFormat('dd/MM/yyyy').format(widget._chamado.dataDeAbertura);
+
+    return InkWell(
+      onTap: () => setState(() => selecionado = !selecionado),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastLinearToSlowEaseIn,
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: selecionado ? Colors.grey.shade300: Colors.white,
+          border: Border(
+            bottom: BorderSide(color: Colors.grey.shade300),
           ),
         ),
-        subtitle: Text(_chamado.descricao,
-            maxLines: 2, overflow: TextOverflow.ellipsis),
-        trailing: const Icon(Icons.arrow_forward_ios),
+        alignment: Alignment.center,
+        child: ListTile(
+          leading: icone,
+          title: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: RichText(
+              text: TextSpan(
+                style: Theme.of(context).textTheme.titleMedium,
+                children: [
+                  TextSpan(
+                    text: '${widget._chamado.titulo}\n',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(
+                      text: 'Aberto em $abertura',
+                      style: Theme.of(context).textTheme.titleSmall),
+                ],
+              ),
+            ),
+          ),
+          subtitle: Text(widget._chamado.descricao,
+              maxLines: 2, overflow: TextOverflow.ellipsis),
+          trailing: const Icon(Icons.arrow_forward_ios),
+        ),
       ),
     );
   }

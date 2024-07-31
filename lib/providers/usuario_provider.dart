@@ -15,8 +15,9 @@ class UsuarioProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void logout() {
+  Future<void> logout() async {
     this.usuario = null;
+    await limpaLogin();
     notifyListeners();
   }
 

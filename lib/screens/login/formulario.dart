@@ -6,6 +6,7 @@ import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/providers/usuario_provider.dart';
 import 'package:vivoapp/screens/home.dart';
 import 'package:vivoapp/services/autenticacao.dart';
+import 'package:vivoapp/widgets/util.dart';
 
 class FormularioDeLogin extends StatefulWidget {
   const FormularioDeLogin({super.key});
@@ -66,7 +67,7 @@ class _FormularioDeLoginState extends State<FormularioDeLogin> {
                         context.read<UsuarioProvider>().login(usuario)
                           .then((_) =>
                             Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(builder: (_) => Home()))
+                                .pushReplacement(rotaDeslizante(const Home()))
                           );
                       }
                     },
