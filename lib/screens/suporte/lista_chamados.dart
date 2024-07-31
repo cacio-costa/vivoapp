@@ -91,7 +91,7 @@ class _CardChamadoState extends State<_CardChamado> {
     var abertura =
         DateFormat('dd/MM/yyyy').format(widget._chamado.dataDeAbertura);
 
-    return InkWell(
+    return GestureDetector(
       onTap: () => setState(() => selecionado = !selecionado),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),

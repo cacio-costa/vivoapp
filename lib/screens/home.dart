@@ -86,27 +86,26 @@ class _AvisoDeFaturasState extends State<AvisoDeFaturas> {
 
   @override
   Widget build(BuildContext context) {
-    if (removerAviso) {
-      return Container();
-    }
-
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 800),
-      curve: Curves.easeOutQuad,
-      opacity: opacidade,
-      child: Wrap(
-        runSpacing: 20,
-        children: [
-          Text(
-            'Você tem prontas para pagar. Quer pagar agora?',
-            style: TextStyle(fontSize: 28),
-          ),
-          FilledButton(onPressed: () {}, child: Text('Pagar faturas')),
-          TextButton(
-            onPressed: removeAviso,
-            child: Text('Ocultar notificação'),
-          ),
-        ],
+    return Visibility(
+      visible: !removerAviso,
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeOutQuad,
+        opacity: opacidade,
+        child: Wrap(
+          runSpacing: 20,
+          children: [
+            Text(
+              'Você tem prontas para pagar. Quer pagar agora?',
+              style: TextStyle(fontSize: 28),
+            ),
+            FilledButton(onPressed: () {}, child: Text('Pagar faturas')),
+            TextButton(
+              onPressed: removeAviso,
+              child: Text('Ocultar notificação'),
+            ),
+          ],
+        ),
       ),
     );
   }
