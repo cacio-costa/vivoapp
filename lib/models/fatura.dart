@@ -31,8 +31,6 @@ class Fatura {
   String get descricaoVencimento => vencida ? 'Venceu em $diaMesVencimento' : 'Vence em $diaMesVencimento';
   String get nomeMes =>_NOME_MES[vencimento.month - 1];
 
-
-
   @override
   String toString() {
     return 'Fatura{id: $id, vencimento: $vencimento, valor: $valor, status: $status}';

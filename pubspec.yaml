@@ -41,6 +41,7 @@ dependencies:
   ulid: ^2.0.0
   shared_preferences: ^2.2.3
   flutter_native_splash: ^2.4.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
