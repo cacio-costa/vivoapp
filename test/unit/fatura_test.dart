@@ -3,7 +3,7 @@ import 'package:vivoapp/models/fatura.dart';
 
 void main() {
 
-  var vencimentoFuturo = DateTime.now().add(Duration(days: 1));
+  var vencimentoFuturo = DateTime.now().add(const Duration(days: 1));
 
   test('Fatura deve ter status ABERTA por padrão quando criada', () {
     var fatura = Fatura(valor: 100, vencimento: vencimentoFuturo);

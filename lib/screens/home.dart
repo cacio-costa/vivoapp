@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/providers/usuario_provider.dart';
 import 'package:vivoapp/screens/login/formulario.dart';
 import 'package:vivoapp/widgets/acesso_rapido.dart';
@@ -28,7 +27,7 @@ class _HomeState extends State<Home> {
                 onPressed: () {
                   context.read<UsuarioProvider>().logout().then(
                         (_) => Navigator.of(context).pushReplacement(
-                          rotaDeslizante(FormularioDeLogin()),
+                          rotaDeslizante(const FormularioDeLogin()),
                         ),
                       );
                 },
@@ -40,7 +39,7 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-        body: Padding(
+        body: const Padding(
           padding: EdgeInsets.all(8.0),
           child: SingleChildScrollView(
             child: Column(
@@ -79,7 +78,7 @@ class _AvisoDeFaturasState extends State<AvisoDeFaturas> {
   void removeAviso() {
     setState(() => opacidade = 0);
 
-    Future.delayed(Duration(milliseconds: 800), () {
+    Future.delayed(const Duration(milliseconds: 800), () {
       setState(() => removerAviso = true);
     });
   }
@@ -95,14 +94,14 @@ class _AvisoDeFaturasState extends State<AvisoDeFaturas> {
         child: Wrap(
           runSpacing: 20,
           children: [
-            Text(
-              'Você tem prontas para pagar. Quer pagar agora?',
+            const Text(
+              'Você tem faturas prontas para pagar. Quer pagar agora?',
               style: TextStyle(fontSize: 28),
             ),
-            FilledButton(onPressed: () {}, child: Text('Pagar faturas')),
+            FilledButton(onPressed: () {}, child: const Text('Pagar faturas')),
             TextButton(
               onPressed: removeAviso,
-              child: Text('Ocultar notificação'),
+              child: const Text('Ocultar notificação'),
             ),
           ],
         ),
@@ -126,11 +125,11 @@ class BannerSaudacao extends StatelessWidget {
           return RichText(
             text: TextSpan(
               text: 'Olá, ',
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: const TextStyle(fontSize: 20, color: Colors.black),
               children: [
                 TextSpan(
                   text: '${provider.usuario?.nome ?? ''}.',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),

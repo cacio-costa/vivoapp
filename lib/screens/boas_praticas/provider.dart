@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+class ContadorProvider extends ChangeNotifier {
+  int contador = 0;
+
+  void incrementa() {
+    contador++;
+    notifyListeners();
+  }
+}
+
 class ExemploProvider extends StatelessWidget {
   const ExemploProvider({super.key});
 
@@ -11,9 +20,8 @@ class ExemploProvider extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: ChangeNotifierProvider(
         create: (context) => ContadorProvider(),
-        child: TelaDoContador(),
+        child: const TelaDoContador(),
       ),
-
     );
   }
 }
@@ -27,16 +35,25 @@ class TelaDoContador extends StatelessWidget {
   Widget build(BuildContext context) {
     print('BUILDOU TELA...');
 
-    var numero = context.watch<ContadorProvider>().contador;
-
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Você clicou no botão...', style: TextStyle(fontSize: 20)),
+            const Text('Você clicou no botão...', style: TextStyle(fontSize: 20)),
             QuadroNegro(
-              child: Contador(numero),
+
+              // Ao invés de monitoriar mudanças aqui, use o Consumer para
+              // reconstruir somente o NumeroNaTela.
+              // child: NumeroNaTela(
+              //   context.watch<ContadorProvider>().contador,
+              // ),
+
+              child: Consumer<ContadorProvider>(
+                builder: (context, provider, child) {
+                  return NumeroNaTela(provider.contador);
+                },
+              ),
             ),
           ],
         ),
@@ -45,31 +62,18 @@ class TelaDoContador extends StatelessWidget {
         onPressed: () {
           context.read<ContadorProvider>().incrementa();
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
 }
 
-class Contador extends StatelessWidget {
-
-  final int numero;
-
-  Contador(this.numero);
-
-  @override
-  Widget build(BuildContext context) {
-    print('BUILDOU CONTADOR...');
-
-    return Text(numero.toString());
-  }
-}
-
 class QuadroNegro extends StatelessWidget {
-  Widget child;
+  final Widget child;
 
-  QuadroNegro({
-    super.key, required this.child,
+  const QuadroNegro({
+    super.key,
+    required this.child,
   });
 
   @override
@@ -81,19 +85,24 @@ class QuadroNegro extends StatelessWidget {
       height: 50,
       width: 50,
       child: Center(
-        child: Text('0', style: TextStyle(fontSize: 20, color: Colors.white)),
+        child: child,
       ),
     );
   }
 }
 
-class ContadorProvider extends ChangeNotifier {
+class NumeroNaTela extends StatelessWidget {
+  final int numero;
 
-  int contador = 0;
+  const NumeroNaTela(this.numero, {super.key});
 
-  void incrementa() {
-    contador++;
-    notifyListeners();
+  @override
+  Widget build(BuildContext context) {
+    print('BUILDOU CONTADOR...');
+
+    return Text(
+      numero.toString(),
+      style: const TextStyle(fontSize: 20, color: Colors.white),
+    );
   }
-
 }

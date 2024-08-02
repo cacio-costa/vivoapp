@@ -8,7 +8,7 @@ class ExemploDecorationImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Exemplo de DecorationImage')),
-      body: Center(
+      body: const Center(
         child: PainelChamada(),
       ),
     );

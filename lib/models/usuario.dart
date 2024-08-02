@@ -1,6 +1,6 @@
 class Usuario {
 
-  static final String ULID = '01j40txzxt3xh713e3fgyp04jd';
+  static const String ULID = '01j40txzxt3xh713e3fgyp04jd';
 
   String id;
   String nome;
@@ -15,9 +15,9 @@ class Usuario {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{
-      'id': this.id,
-      'nome': this.nome,
-      'email': this.email,
+      'id': id,
+      'nome': nome,
+      'email': email,
     };
 
     return data;

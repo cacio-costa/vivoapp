@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:ulid/ulid.dart';
 import 'package:vivoapp/models/chamado.dart';
-import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/screens/suporte/formulario_novo_chamado.dart';
 import 'package:vivoapp/services/api.dart';
 
 class ListaDeChamados extends StatefulWidget {
-  ListaDeChamados({super.key});
+  const ListaDeChamados({super.key});
 
   @override
   State<ListaDeChamados> createState() => _ListaDeChamadosState();
@@ -41,7 +39,7 @@ class _ListaDeChamadosState extends State<ListaDeChamados> {
           Navigator.of(context)
               .push(
                 MaterialPageRoute<Chamado?>(
-                  builder: (context) => FormularioNovoChamado(),
+                  builder: (context) => const FormularioNovoChamado(),
                 ),
               )
               .then(
@@ -67,7 +65,7 @@ class _ListaDeChamadosState extends State<ListaDeChamados> {
 class _CardChamado extends StatefulWidget {
   final Chamado _chamado;
 
-  const _CardChamado(this._chamado, {super.key});
+  const _CardChamado(this._chamado);
 
   @override
   State<_CardChamado> createState() => _CardChamadoState();

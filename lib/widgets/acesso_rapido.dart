@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/screens/fatura/central.dart';
 import 'package:vivoapp/screens/suporte/lista_chamados.dart';
 import 'package:vivoapp/widgets/botoes.dart';
 
 class AcessoRapido extends StatelessWidget {
-  AcessoRapido({
+  const AcessoRapido({
     super.key,
   });
 
@@ -31,24 +30,26 @@ class AcessoRapido extends StatelessWidget {
                     icone: Icons.accessibility_new_rounded,
                     rotulo: 'Você está na categoria Platinum',
                     subtitulo: 'Conheça todos os benefícios',
+                    onclick: () {},
                   ),
                   BotaoCard.pequeno(
                     icone: Icons.subject_sharp,
                     rotulo: 'Trocar assinatura',
+                    onclick: () {},
                   ),
                   BotaoCard.pequeno(
                     icone: Icons.tips_and_updates_outlined,
                     rotulo: 'Conhecer o novo app',
+                    onclick: () {},
                   ),
                   BotaoCard.grande(
-                    icone: Icons.settings,
-                    rotulo: 'Suporte técnico',
-                    onclick: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => ListaDeChamados()),
-                      );
-                    }
-                  ),
+                      icone: Icons.settings,
+                      rotulo: 'Suporte técnico',
+                      onclick: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => const ListaDeChamados()),
+                        );
+                      }),
                 ],
               ),
               Row(
@@ -64,14 +65,17 @@ class AcessoRapido extends StatelessWidget {
                   BotaoCard.pequeno(
                     icone: Icons.support_agent,
                     rotulo: 'Atendimento exclusivo',
+                    onclick: () {},
                   ),
                   BotaoCard.grande(
                     icone: Icons.auto_awesome_outlined,
                     rotulo: 'Aura',
+                    onclick: () {},
                   ),
                   BotaoCard.grande(
                     icone: Icons.more,
                     rotulo: 'Mais',
+                    onclick: () {},
                   ),
                 ],
               ),

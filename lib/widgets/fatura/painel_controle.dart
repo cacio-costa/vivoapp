@@ -53,8 +53,8 @@ class _TopoPainelFatura extends StatelessWidget {
         color: Colors.green[800],
       ),
       StatusFatura.atrasada:
-      Icon(Icons.watch_later_outlined, color: Colors.red),
-      StatusFatura.aberta: Icon(Icons.error_outline, color: Colors.grey),
+      const Icon(Icons.watch_later_outlined, color: Colors.red),
+      StatusFatura.aberta: const Icon(Icons.error_outline, color: Colors.grey),
     };
 
     return Padding(

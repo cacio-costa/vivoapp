@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vivoapp/providers/usuario_provider.dart';
 import 'package:vivoapp/screens/boas_praticas/provider.dart';
-import 'package:vivoapp/screens/boas_praticas/stateless_stateful.dart';
-import 'package:vivoapp/screens/boas_praticas/widgets_separados.dart';
 import 'package:vivoapp/screens/home.dart';
 import 'package:vivoapp/screens/login/formulario.dart';
 import 'package:vivoapp/temas.dart';
@@ -11,10 +9,9 @@ import 'package:vivoapp/temas.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // runApp(const VivoApp());
+  runApp(const VivoApp());
   // runApp(ExemploWidgetsSeparados());
-  // runApp(ExemploStatelessStateful());
-  runApp(ExemploProvider());
+  // runApp(const ExemploProvider());
 }
 
 class VivoApp extends StatelessWidget {

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ulid/ulid.dart';
 import 'package:vivoapp/services/api.dart';
 import 'package:vivoapp/models/chamado.dart';
-import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/providers/usuario_provider.dart';
 
 class FormularioNovoChamado extends StatefulWidget {
-  FormularioNovoChamado({super.key});
+  const FormularioNovoChamado({super.key});
 
   @override
   State<FormularioNovoChamado> createState() => _FormularioNovoChamadoState();
@@ -33,24 +31,24 @@ class _FormularioNovoChamadoState extends State<FormularioNovoChamado> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Título do chamado', style: TextStyle(fontSize: 28)),
+                  const Text('Título do chamado', style: TextStyle(fontSize: 28)),
                   TextFormField(
                     controller: campoTitulo,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Descreva o seu problema',
                     ),
                   ),
-                  SizedBox(height: 40),
-                  Text('Descreva o seu problema',
+                  const SizedBox(height: 40),
+                  const Text('Descreva o seu problema',
                       style: TextStyle(fontSize: 28)),
                   TextFormField(
                     controller: campoDescricao,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Descreva o seu problema',
                     ),
                     maxLines: 5,
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   Center(
                     child: FilledButton(
                       onPressed: () {

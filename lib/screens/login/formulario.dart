@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ulid/ulid.dart';
-import 'package:vivoapp/services/api.dart';
 import 'package:vivoapp/models/usuario.dart';
 import 'package:vivoapp/providers/usuario_provider.dart';
 import 'package:vivoapp/screens/home.dart';
-import 'package:vivoapp/services/autenticacao.dart';
 import 'package:vivoapp/widgets/util.dart';
 
 class FormularioDeLogin extends StatefulWidget {
@@ -34,18 +31,18 @@ class _FormularioDeLoginState extends State<FormularioDeLogin> {
             child: Column(
               crossAxisAlignment:CrossAxisAlignment.start,
               children: [
-                Text('E-mail:', style: TextStyle(fontSize: 28)),
+                const Text('E-mail:', style: TextStyle(fontSize: 28)),
                 TextFormField(
                   controller: _campoEmail,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Digite o seu e-mail',
                   ),
                 ),
                 const SizedBox(height: 40),
-                Text('Senha', style: TextStyle(fontSize: 28)),
+                const Text('Senha', style: TextStyle(fontSize: 28)),
                 TextFormField(
                   controller: _campoSenha,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Digite a sua senha',
                   ),
                   obscureText: true,
@@ -54,8 +51,8 @@ class _FormularioDeLoginState extends State<FormularioDeLogin> {
                 Center(
                   child: FilledButton(
                     onPressed: () {
-                      if ((_campoEmail.text != null && _campoEmail.text == 'fulano@email.com')
-                        &&(_campoSenha.text != null && _campoSenha.text == '123')) {
+                      if ((_campoEmail.text == 'fulano@email.com')
+                        &&(_campoSenha.text == '123')) {
 
                         Usuario usuario = Usuario(
                           id: Usuario.ULID,

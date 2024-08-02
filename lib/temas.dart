@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData TEMA_CLARO = ThemeData(
   useMaterial3: true,
-  colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF8533AD)),
+  colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF8533AD)),
   textTheme: const TextTheme(
     displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
     bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),

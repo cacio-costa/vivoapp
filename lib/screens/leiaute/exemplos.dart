@@ -23,13 +23,13 @@ class ExemploRichText extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: RichText(
               text: TextSpan(
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 16,
               letterSpacing: 0.0,
             ),
             children: [
-              TextSpan(
+              const TextSpan(
                 text: 'Acessórios para seu iPhone. Aqui na ',
               ),
               TextSpan(
@@ -127,11 +127,11 @@ class ExemploCircleAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Exemplo de CircleAvatar')),
-      body: Center(
+      body: const Center(
         child: CircleAvatar(
           radius: 100,
           backgroundImage:
-              const AssetImage('assets/images/corinthians_rebaixado.jpeg'),
+              AssetImage('assets/images/corinthians_rebaixado.jpeg'),
         ),
       ),
     );
@@ -214,7 +214,7 @@ class ExemploFittedBox extends StatelessWidget {
         height: 300,
         width: 300,
         color: Colors.purple,
-        child: FittedBox(
+        child: const FittedBox(
           child: Center(
             child: Text('Mundo Vivo',
                 style: TextStyle(fontSize: 24, color: Colors.white)),
@@ -247,7 +247,7 @@ class _ExemploVisibilityState extends State<ExemploVisibility> {
               onPressed: () {
                 setState(() => visivel = !visivel);
               },
-              child: Text('Mostrar/Esconder mundial do Palmeiras'),
+              child: const Text('Mostrar/Esconder mundial do Palmeiras'),
             ),
             Visibility(
               visible: visivel,
@@ -255,7 +255,7 @@ class _ExemploVisibilityState extends State<ExemploVisibility> {
                 color: Colors.green,
                 height: 300,
                 width: 300,
-                child: FittedBox(child: Text('Palmeiras não tem mundial')),
+                child: const FittedBox(child: Text('Palmeiras não tem mundial')),
               ),
             ),
           ],
@@ -278,7 +278,7 @@ class ExemploSliverAppBar extends StatelessWidget {
             floating: true,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('SliverAppBar'),
+              title: const Text('SliverAppBar'),
               background: Image.asset(
                 'assets/images/corinthians_rebaixado.jpeg',
                 fit: BoxFit.cover,

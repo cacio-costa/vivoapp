@@ -101,9 +101,9 @@ class _FormaDePagamento extends StatelessWidget {
   final Icon icone;
   final String rotulo;
 
-  void Function()? onclick;
+  final void Function()? onclick;
 
-  _FormaDePagamento(this.rotulo, this.icone, {this.onclick});
+  const _FormaDePagamento(this.rotulo, this.icone, {this.onclick});
 
   @override
   Widget build(BuildContext context) {

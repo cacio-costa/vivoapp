@@ -21,19 +21,19 @@ class PainelChamada extends StatelessWidget {
             offset: const Offset(0, 3),
           ),
         ],
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage('assets/images/produtos_apple.jpg'),
           fit: BoxFit.fitHeight,
         ),
       ),
-      child:  Padding(
-        padding: const EdgeInsets.all(24.0),
+      child:  const Padding(
+        padding: EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 8),
+              padding: EdgeInsets.only(bottom: 8),
               child: Text(
                 'Acessórios para seu iPhone',
                 style: TextStyle(
@@ -52,7 +52,7 @@ class PainelChamada extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8),
+              padding: EdgeInsets.only(top: 8),
               child: Text(
                 'Parcelamento sem juros e frete grátis',
                 style: TextStyle(

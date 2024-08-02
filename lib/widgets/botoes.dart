@@ -8,22 +8,22 @@ class BotaoCard extends StatelessWidget {
   final double largura;
 
   // declara uma função que não recebe parâmetros e não retorna nada
-  void Function()? onclick;
+  final void Function() onclick;
 
-  BotaoCard({
+  const BotaoCard({
     required this.icone,
     required this.rotulo,
     required this.largura,
+    required this.onclick,
     this.subtitulo = '',
-    this.onclick,
     super.key,
   });
 
-  BotaoCard.pequeno({
+  const BotaoCard.pequeno({
     required IconData icone,
     required String rotulo,
     String subtitulo = '',
-    void Function()? onclick,
+    required void Function() onclick,
     Key? key,
   }) : this(
     icone: icone,
@@ -34,11 +34,11 @@ class BotaoCard extends StatelessWidget {
     key: key,
   );
 
-  BotaoCard.grande({
+  const BotaoCard.grande({
     required IconData icone,
     required String rotulo,
     String subtitulo = '',
-    void Function()? onclick,
+    required void Function() onclick,
     Key? key,
   }) : this(
     icone: icone,
